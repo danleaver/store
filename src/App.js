@@ -23,13 +23,37 @@ addItem = (incomingItem) => {
   this.setState({ items: [newItem, ...items] })
 }
 
+deleteItem = (id) => {
+  const items = this.state.items.filter( item => {
+    if (item.id !== id) {
+      return item
+    }
+  })
+  this.setState({ items })
+}
+
+updateItem = (id, updatedItem) => {
+  const { items } = this.state;
+  this.setState({
+    items: items.map( k => {
+      if (k.id === id) {
+        return { ...updatedItem }
+      }
+      return k
+    })
+  })
+}
   render() {
     const { items } = this.state
     return(
       <div>
         
         <ItemForm addItem={this.addItem} />
-        <ItemList items={this.state.items} />
+        <ItemList
+        items={this.state.items} 
+        deleteItem={this.deleteItem} 
+        updateItem={this.updateItem}
+        />
         
       </div>
     )
