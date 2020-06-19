@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ItemList from './components/list/ItemList';
 import ItemForm from './components/list/ItemForm';
+import './App.css'
+
+
 
 class App extends Component {
 
